@@ -6,10 +6,6 @@
 This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
 
 
-<h2>Video Demonstration</h2>
-
-- ### [YouTube: How to Deploy on-premises Active Directory within Azure Compute](https://www.youtube.com)
-
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
@@ -234,4 +230,125 @@ username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <h3>Step 5: Join Client-1 (Windows VM) to the Domain</h3>
+
+<h4>Set Client-1's DNS settings to the DC-1's Private IP Address + Restart</h4>
+
+<p>It’s time to now connect Client-1 to the domain (mydomain.com). During this entire time, our client-1 hasn’t been doing much as we’ve been setting up DC-1. Once Client-1 is added to the domain, Client-1 can retrieve/connect to user information stored in DC-1. Client-1 is like one of the computers you'd find in an office building or on a university campus. Once connected to the domain, any/all authorized registered users may log into it if their data is stored on the Domain Controller. </p>
+
+<p>Setting a client's DNS settings to the domain controller's private IP address is important because it helps the client find and connect to important resources within a network. It ensures that the client can communicate with the domain controller for things like logging in, accessing shared files and printers, and finding other computers on the network. It's like having the right address book entry to reach the central hub of the network, making everything work smoothly.</p>
+
+1. Go to Azure Portal > 'Virtual Machines' > DC-1 VM > Copy the Private IP address in the Overview (in this example: 10.0.0.4)
+2. Go to Client-1 VM > Networking > Network Interface 
+3. DNS Servers > Custom > Set to DC-1’s Private IP address (in this example: 10.0.0.4) > Save
+
+<p>Now that we’ve changed Client-1’s DNS settings, we want to solidify this. We are going to flush any/all previous local dns cache on Client-1 so they we know it’ll definitely be set to our DC-1 Private IP.</p>
+
+4. Client-1 VM Overview > Select "Restart" to flush dns cache 
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h4>Join Client-1 to the Domain and Re-login as Admin</h4>
+
+<p>Now it’s time to actually add Client-1 onto the domain. We’re going to login with the original user we created in the beginning, join Client-1 to the domain, and once Client-1 is on the domain, we are able to use our admin Jane Doe.</p>
+
+1. Log back into Client-1 VM with original user from Step 1. In this example, it's my name: darinstathos
+2. Right click the Windows icon > 'System' 
+3. Rename this PC > Advanced > Change > Domain
+4. Change the domain to: mydomain.com (or whatever domain you'd like)
+
+<p>Since we altered the DNS settings earlier so that it matches DC-1’s private IP address, Client-1 will be able to recognize this domain.</p>
+
+5. We’ll be prompted to log in as Jane Admin (mydomain.com\jane_admin) and when this happens, our computer will be prompted to restart
+6. We can now log in to Client-1 as Jane Admin because Client-1 is shares the same domain network as the Domain Controller.
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h3>Step 6: Setup and Establish Remote Desktop for Non-Administrative Users on Client-1</h3>
+
+<p>We're going to set it up so all domain users can remote login into Client-1. Right now, only admins can do this.</p>
+
+1. Inside Client-1 VM: Right click Windows icon at bottom of screen > system properties
+2. Remote desktop > Select Users that can remotely access PC > add > Domain Users > OK
+3. You can now log into Client-1 as a normal, non-administrative user now
+
+<p>**Side notes:
+  * If you go inside DC-1 VM > Active Directory Users and Computers > Users > Domain Users > Members: that’s where everyone is and where everyone will get added automatically 
+  *  Group Policy allows us to do this remotely and with MANY computers (hundred or thousands of computers instantly instead of logging into each computer one by one), but that’s beyond the scope of here
+
+
+<h3>Step 7: Create additional users and log into Client-1 with those users</h3>
+
+<p>Now that we’ve set it up so non-administrator users (regular users) can access Client-1, we’re going to put this into action by creating many users and logging into Client-1 with one of those users.</p>
+
+1. Log into DC-1 VM as Jane Doe: mydomain.com\jane_admin
+2. Use the search bar to open up Powershell ISE, right click to run as administrator
+
+<p>PowerShell ISE (Integrated Scripting Environment) is a user-friendly graphical tool provided by Microsoft for writing, testing, and executing PowerShell scripts. It provides an interactive and simplified environment for individuals, including IT professionals and system administrators, to automate tasks, manage systems, and perform various administrative tasks using the PowerShell scripting language. Think of it as a coding workspace with helpful features that make it easier to create and run PowerShell commands and scripts.</p>
+
+3. Create a new file > Copy/Paste the script below. This code allows us to create random usernames quickly > Run the script
+4. Random usernames are now being created
+
+ # ----- Edit these Variables for your own Use Case ----- #
+$PASSWORD_FOR_USERS   = "Password1"
+$NUMBER_OF_ACCOUNTS_TO_CREATE = 10000
+# ------------------------------------------------------ #
+
+Function generate-random-name() {
+    $consonants = @('b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','z')
+    $vowels = @('a','e','i','o','u','y')
+    $nameLength = Get-Random -Minimum 3 -Maximum 7
+    $count = 0
+    $name = ""
+
+    while ($count -lt $nameLength) {
+        if ($($count % 2) -eq 0) {
+            $name += $consonants[$(Get-Random -Minimum 0 -Maximum $($consonants.Count - 1))]
+        }
+        else {
+            $name += $vowels[$(Get-Random -Minimum 0 -Maximum $($vowels.Count - 1))]
+        }
+        $count++
+    }
+
+    return $name
+
+}
+
+
+
+$count = 1
+while ($count -lt $NUMBER_OF_ACCOUNTS_TO_CREATE) {
+    $fisrtName = generate-random-name
+    $lastName = generate-random-name
+    $username = $fisrtName + '.' + $lastName
+    $password = ConvertTo-SecureString $PASSWORD_FOR_USERS -AsPlainText -Force
+
+    Write-Host "Creating user: $($username)" -BackgroundColor Black -ForegroundColor Cyan
+    
+    New-AdUser -AccountPassword $password `
+               -GivenName $firstName `
+               -Surname $lastName `
+               -DisplayName $username `
+               -Name $username `
+               -EmployeeID $username `
+               -PasswordNeverExpires $true `
+               -Path "ou=_EMPLOYEES,$(([ADSI]`"").distinguishedName)" `
+               -Enabled $true
+    $count++
+}
+
+5. If we go back to DC-1 VM > Active Directory Users and Computers > _EMPLOYEES > Refresh: all the names are being dumped in there 
+6. We will choose one of these users and log into Client-1 VM with it. In this example, we will use username: Duna.lin (password: Password1)
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+
+
+
 
