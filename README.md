@@ -24,13 +24,13 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>High-Level Deployment and Configuration Steps</h2>
 
-- Step 1:Set up Azure Resources: Domain Controller, Client-1 (Windows VM), setting Domain Controller's NIC Private IP to static
-  <h4>- Step 2</h4><p>Ensure & Establish Connectivity between the Client & Domain Controller</p>
-  <h4>- Step 3</h4><p>Install Active Directory</p>
-  <h4>- Step 4</h4><p>Create an Admin account and normal user account in Active Directory
-  <h4>- Step 5</h4><p>Join Client-1 (Windows VM) to the domain
-  <h4>- Step 6</h4><p>Setup and Establish Remote Desktop for non-administrative users on Client-1</p>
-  <h4>- Step 7</h4><p>Create additional users and log into Client-1 with those users</p>
+- Step 1: Set up Azure Resources: Domain Controller, Client-1 (Windows VM), setting Domain Controller's NIC Private IP to static
+- Step 2: Ensure & Establish Connectivity between the Client & Domain Controller
+- Step 3: Install Active Directory
+- Step 4: Create an Admin account and normal user account in Active Directory
+- Step 5: Join Client-1 (Windows VM) to the domain
+- Step 6: Setup and Establish Remote Desktop for non-administrative users on Client-1
+- Step 7: Create additional users and log into Client-1 with those users
 
 
 <h2>Deployment and Configuration Steps</h2>
