@@ -85,3 +85,49 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
  Given that it plays such a crucial role in centralizing and streamlining networking, we want our network devices to always be able to locate it for consistent instruction and communication. A static IP address prevents potential disruptions caused by a dynamic IP address. Thus, we must change the IP address from dynamic to static (meaning it uses the same IP address).</P>
 
+1. Navigate to Azure > 'Virtual Machines' > and select our Domain Controller "DC-1"
+2. Select 'Networking' > Select 'Network Interface'
+3. Select 'IP Configurations' > Select the current/only IPConfig there
+4. Switch the assignment from 'Dynamic' to 'Static' and press 'Save'
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+We have now switched the Domain Controller's NIC Private IP Address to be static. Now, there is more peace of mind in knowing that devices that connect to the domain and rely on the Domain Controller for user access/information will have secure connection and communication. 
+<br>
+
+  <h3>Step 2: Ensure & Establish Connectivity between the Client and Domain Controller</h3>
+  
+  <p>The next step is to ensure connectivity between the Client and the Domain Controller. We want to make sure that our machines can talk to one another so that once we add users accounts to the DC-1, Client-1 will be able to access them.</p>
+  
+  <h4>Log into Client-1 VM</h4>
+  <p>First, we’re going to log into the Client-1 VM. To do this, we must retrieve the Public IP Address and connect it to Remote Desktop Connection (if you’re using WindowsOS) or Microsoft Remote Desktop (if you’re using MacOS).</p>
+  
+  1. In the Azure Portal, navigate to 'Virtual Machines'
+  2. Select 'Client-1'
+  3. Copy the Public IP Address to clipboard (Example shown: [X.X.X,X]
+  4. Open Remote Desktop Connection (Windows) or Microsoft Remote Desktop (MacOS: can be downloaded from App Store)
+  5. Paste the IP address
+  6. Log in using the username/password created earlier in step 1. In this example, my username is my name: darinstathos
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h4>Check Connectivity to Domain Controller (will fail at first attempt)</h4>
+Now that we’ve logged into Client-1, we want to “ping” to our Domain Controller to make sure our machines can talk to one another/that there’s connectivity.
+
+However, most likely, this “ping” will fail due to the Domain Controller’s firewall blocking ICMP traffic.
+
+<strong>Why do firewalls sometimes block ICMP traffic?</strong>
+Firewalls sometimes block ICMP (Internet Control Message Protocol) traffic as a security measure to protect against potential network vulnerabilities. ICMP traffic includes various types of messages, such as ping requests and error messages, which can be exploited for network scanning, denial-of-service attacks, or information disclosure. Blocking ICMP can help prevent these types of attacks and limit potential exposure of sensitive information. However, it's worth noting that ICMP is also used for legitimate network troubleshooting and diagnostic purposes, so firewall rules should be carefully configured to balance security and operational needs.
+
+1. We need to get DC-1's private IP Address: Azure Portal > 'Virtual Machines' > DC-1
+2. Copy the NIC Private IP Address. In this example, it's: 10.0.0.4
+3. Navigate back to our Client-1 VM and open the command line in the search bar
+4. Type: "ping -t 10.0.0.4" (-t means that it will ping continuously)
+5. We can see the request failed/timed out because DC-1's firewall is preventing/blocking ICMP traffic from coming through
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
