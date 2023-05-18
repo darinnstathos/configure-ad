@@ -131,3 +131,64 @@ Firewalls sometimes block ICMP (Internet Control Message Protocol) traffic as a 
 
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h4>Open Up the Firewall</h4>
+<p>Since we were unable to “ping”/connect to our Domain Controller, we must open up the firewall to allow ICMP traffic. To do this, we must connect/log into our Domain Controller VM and alter the settings.</p>
+
+1. Navigate to Azure > 'Virtual Machines' > DC-1: Copy the Public IP Address
+2. Open Remote Desktop Connection (Windows) or Microsoft Remote Desktop (MacOS) & paste the IP address and use the username/password created in Step 1
+3. Inside of DC-1 VM, navigate to the search bar and type in “wf.msc” or “firewall”
+4. Select “Inbound Rules” and filter by “Protocol” (since we’re looking for ICMP)
+5. Enable Core Networking Diagnostics: ICMP Echo Request (ICMPv4-In)
+6. Right click the two inbound rules > select “enable rule
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<p>Now, when we go back to our Client-1 VM, if we left the command-line open, we can now see that the “pings” are coming through because we opened up the DC-1’s firewall to allow ICMP traffic.</p>
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h3>Step 3: Install Active Directory</h3>
+<Strong>What is Active Directory and why is it important?</strong>
+<p>Now that there has been connectivity established between DC-1 and Client-1, it’s time to install Active Directory.
+
+In simple terms, Active Directory is like a phonebook or a directory for a network. It keeps track of all the users, computers, and other resources within a network domain. It helps manage user accounts, control access to resources, and enforce security policies, making it easier for network administrators to organize and manage their network effectively.</p>
+
+1. Log into DC-1 VM using the Public IP Address & username/password
+2. Once inside DC-1, use the search bar to go to Service Manager
+3. Select “Add roles and features” > Hit ‘next’ on everything until you reach & select <strong>Active Directory Domain Services</strong>
+4. Add the features > continue to press ‘Next’ on everything > select ‘Install’ 
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+We now have Active Directory installed on DC-1. However, we are not finished yet. We need to set up an actual domain. 
+
+<h4>Promote as a DC: Setup a New Forest as mydomain.com (Domain can actually be anything. Mydomain.com is an example)</h4>
+
+<p>We have installed Active Directory but the next step is to set up an actual domain. Setting up a domain means there is an address for a particular organization to unite under. This domain is attached to permitted users, allowing users to access various clients/devices on the network. 
+  
+  For example, if you work for a large accounting firm or you're in school, you're given a username with a domain attached to it. You can then take your username and log into any computer on campus or in the office. Example: dstathos@univerity.edu or dstathos@accountingfirm.com</p>
+  
+  For this example, we are using "mydomain.com". However, any domain is suitable. 
+  
+  1. Go to DC-1 VM > open Service Manager > select the Notifications flag in the top right-hand corner
+  2. Select: "Promote this server to be a domain controller"
+  3. Select: “Add a new forest” > Input the domain name of choice (example: mydomain.com) > Select: “Next” 
+  4. Input a password for the sake of continuing forward with “Next” although it won’t be used in this lab > Continue pressing ‘Next’ until you reach the ‘Install’ button
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h4>Restart & Log back into DC-1 as user: mydomain.com\[username]</h4>
+
+1. It is normal for the computer to need to restart. When the computer restarts, if the IP address changes, we are sure to navigate to Azure Portal and copy the DC-1 Public IP address. We set the Private IP address to be static, but it’s possible for the Public IP to change.</p>
+2. Once booted out, we can log back into DC-1 using the domain we have now set up: mydomain.com\darinstathos (or) darinstathos@mydomain.com
+3. DC-1 is now officially a domain controller [[group policy]]
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+
