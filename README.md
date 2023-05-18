@@ -61,26 +61,24 @@ This tutorial outlines the implementation of on-premises Active Directory within
   <h4>Creating our Client:</h4>
     <strong>What is the client?</strong>
     <p>The client, in relation to the domain controller, is a device that connects to the network domain and relies on the domain controller for user authentication, access permissions, etc. The domain controller is the 'big brain' the lets the device/client know what to do/who's allowed to do what. The client interacts with the domain controller to log in, access shared resources, etc.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>
+    <p>We're creating a client device (Microsoft Windows) to witness the borrowing of user account information from our Domain Controller</P>
+    
+    1. Naviagte to Microsoft Azure and select 'Virtual Machines'
+    2. Within the Virtual Machines creation portal, select the Resource Group we previously created: "AD-Lab" 
+    3. We'll create the Virtual Machine Name: "Client-1"
+    4. Select the image: Windows 10 Pro, version 22H2 -x64Gen
+    5. Size: 2vcpus
+    6. Create a username/password. In this example, I used my personal name again: darinstathos
+    7. Under licensing, check the box: “I confirm I have eligible Windows 10/11 license with multi-tenant hosting rights
+    8. Forward to the next page: Next: Disks >, Next: Networking >. Take note that Client-1 was automatically put on the same virtual network as our DC-1. This is important so that the two can later communicate with one another. 
+    
+    
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+    
+    
+
 <br />
 
 <p>
