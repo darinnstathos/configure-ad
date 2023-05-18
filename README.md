@@ -77,14 +77,11 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
     
-    
-
 <br />
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+<h4>Setting Domain Controller's NIC Private IP Address to Static:</h4>
+<strong>Why is it necessary to change the Private IP Address to Static?</strong>
+<p>Whenever we create resources such as Virtual Machines within Azure, there are several other resources created alongside it. One of these resources are NICs (Network Interface Cards) which have IP addresses automatically assigned to them via a DHCP server hidden within Azure. As mentioned previously, domain controllers provide centralized management and organization over user accounts, access permissions, and security policies within a network. 
+
+ Given that it plays such a crucial role in centralizing and streamlining networking, we want our network devices to always be able to locate it for consistent instruction and communication. A static IP address prevents potential disruptions caused by a dynamic IP address. Thus, we must change the IP address from dynamic to static (meaning it uses the same IP address).</P>
+
