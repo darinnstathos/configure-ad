@@ -191,4 +191,47 @@ We now have Active Directory installed on DC-1. However, we are not finished yet
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
+<h3>Step 4: Create an Admin and a Normal User Account in Active Directory</h3>
+<p>Now that Active Directory has been installed, our Domain Controller became official with its domain, it’s now time to create an admin and normal user account in AD.
+  Admins are able to create, modify, and delete user accounte, manage access permissions, etc. They can configure and enforce security policies such as password requirements and account lockout settings. They can also manage the structure of the domain, delegate admin tasks, etc.</p>
+  
+  <h4>Creating Organizational Units: Employees and Admins</h4>
+  1. Inside DC-1 VM, navigate to ‘Active Directory Users and Computers’
+- We can do this two ways: 
+* Go to Service Manager > Tools (upper right-hand corner) > Active Directory Users and Computers
+* Search bar > Type: Active Directory Users and Computers
+
+2. We can see the domain we created: "mydomain.com". Now, we’re going to create organizational units to place our employees and admins.
+3. Right click on “mydomain.com” (or whatever name you decided to give your domain) > 'New' > 'Organizational Unit'
+4. We will create an organizational for _EMPLOYEES and for _ADMINS
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h4>Creating an Employee/Admin & then Assigning Role of Admin</h4>
+<p>Now that we have our organizational units, we want to create an Admin and assign them the role of “Admin” so that they can fulfill admin duties.</p>
+
+1. Inside of _ADMINS: right click > ‘New’ > ‘Users’
+2. We will give our admin the name of “Jane Doe” and her login username shall be jane_admin@mydomain.com. 
+3. Ideally, we’d like for the user to change their password every time for security purposes. However, for the sake of this exercise, we will select for the password to never expire. 
+
+<p>Now that jane_admin has been created, we must give her the role of ‘Admin’. Currently, just because she was created inside of an organizational unit folder called “_ADMINS” doesn’t mean her title carries substance or authority yet. We shall grant her authority right now. We’ll add Jane Doe to the Domain Admins Security Group.</p>
+
+4. Right click Jane Doe > Properties > Member Of > Add > Domain Admins [Enter Key & Check Names] > Apply & OK
+
+<p>In Active Directory Users and Computers, "Domain Admins" is a default group that holds administrative privileges over the entire domain. Members of the Domain Admins group have full control and unrestricted access to all resources within the domain. They can perform tasks such as creating, modifying, or deleting user accounts, managing group memberships, configuring security policies, and managing domain-wide settings. Essentially, Domain Admins have the highest level of administrative authority within the Active Directory domain and are responsible for managing and maintaining the domain infrastructure.</p>
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h4>Log Out of DC-1 and Log In as New Admin</h4>
+
+<p>Now that Jane Doe is an admin, we can log out of our Domain Controller and log back in as Jane Doe.</p>
+username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
+
+<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<h3>Step 5: Join Client-1 (Windows VM) to the Domain</h3>
 
