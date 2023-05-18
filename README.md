@@ -37,6 +37,22 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <p>
   <h3>Step 1: Set Up Resources in Azure</h3>
+  <p>In step 1, we’re going to create a Domain Controller, a client (Microsoft VM), and set the Domain Controller’s NIC Private IP Address to be static.</p>
+  
+  <h4>Creating the Domain Controller</h4>
+  <strong>What is a domain controller?</strong>
+  <p>A domain controller is a server that manages and authenticates user access to a network domain. Domain controllers store user account information such as usernames and passwords and controls access to network resources. They help authorize and authenticate users, facilitate efficient and streamlined network administration, and improve overall security.</P>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
