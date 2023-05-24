@@ -133,12 +133,18 @@ Firewalls sometimes block ICMP (Internet Control Message Protocol) traffic as a 
 1. Navigate to Azure > 'Virtual Machines' > DC-1: Copy the Public IP Address
 2. Open Remote Desktop Connection (Windows) or Microsoft Remote Desktop (MacOS) & paste the IP address and use the username/password created in Step 1
 3. Inside of DC-1 VM, navigate to the search bar and type in “wf.msc” or “firewall”
-4. Select “Inbound Rules” and filter by “Protocol” (since we’re looking for ICMP)
-5. Enable Core Networking Diagnostics: ICMP Echo Request (ICMPv4-In)
-6. Right click the two inbound rules > select “enable rule
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/lNrjVhc.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/jxbZ3XS.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/I8myAP2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+4. Select “Inbound Rules” and filter by “Protocol” (since we’re looking for ICMPv4)
+5. Enable Core Networking Diagnostics: ICMP Echo Request (ICMPv4-In)
+6. Right click the two inbound rules > select “enable rule"
+
+<img src="https://i.imgur.com/ALQ2Tqc.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/9emoF0X.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
 
 <p>Now, when we go back to our Client-1 VM, if we left the command-line open, we can now see that the “pings” are coming through because we opened up the DC-1’s firewall to allow ICMP traffic.</p>
 
