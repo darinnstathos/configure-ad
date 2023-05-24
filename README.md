@@ -190,8 +190,8 @@ We now have Active Directory installed on DC-1. However, we are not finished yet
 2. Once booted out, we can log back into DC-1 using the domain we have now set up: mydomain.com\darinstathos (or) darinstathos@mydomain.com
 3. DC-1 is now officially a domain controller [[group policy]]
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/TuOxlzE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/EBmChAn.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <h3>Step 4: Create an Admin and a Normal User Account in Active Directory</h3>
 <p>Now that Active Directory has been installed, our Domain Controller became official with its domain, it’s now time to create an admin and normal user account in AD.
@@ -207,8 +207,9 @@ We now have Active Directory installed on DC-1. However, we are not finished yet
 3. Right click on “mydomain.com” (or whatever name you decided to give your domain) > 'New' > 'Organizational Unit'
 4. We will create an organizational for _EMPLOYEES and for _ADMINS
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/RSgMaLR.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/m4OE8Wr.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/vPE2TyC.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <h4>Creating an Employee/Admin & then Assigning Role of Admin</h4>
 <p>Now that we have our organizational units, we want to create an Admin and assign them the role of “Admin” so that they can fulfill admin duties.</p>
