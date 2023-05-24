@@ -161,8 +161,9 @@ In simple terms, Active Directory is like a phonebook or a directory for a netwo
 3. Select “Add roles and features” > Hit ‘next’ on everything until you reach & select <strong>Active Directory Domain Services</strong>
 4. Add the features > continue to press ‘Next’ on everything > select ‘Install’ 
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Qk6wPjg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/E6J427g.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/UFYfRkq.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 We now have Active Directory installed on DC-1. However, we are not finished yet. We need to set up an actual domain. 
 
@@ -179,9 +180,9 @@ We now have Active Directory installed on DC-1. However, we are not finished yet
   3. Select: “Add a new forest” > Input the domain name of choice (example: mydomain.com) > Select: “Next” 
   4. Input a password for the sake of continuing forward with “Next” although it won’t be used in this lab > Continue pressing ‘Next’ until you reach the ‘Install’ button
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/3qgGfvS.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/PRP9sSq.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/c1m2IIM.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <h4>Restart & Log back into DC-1 as user: mydomain.com\[username]</h4>
 
