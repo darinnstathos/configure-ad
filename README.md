@@ -106,9 +106,9 @@ We have now switched the Domain Controller's NIC Private IP Address to be static
   5. Paste the IP address
   6. Log in using the username/password created earlier in step 1. In this example, my username is my name: darinstathos
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/ZIh6gvb.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/NuYn2WR.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/kPeUFHN.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <h4>Check Connectivity to Domain Controller (will fail at first attempt)</h4>
 Now that we’ve logged into Client-1, we want to “ping” to our Domain Controller to make sure our machines can talk to one another/that there’s connectivity.
