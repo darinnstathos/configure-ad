@@ -218,16 +218,19 @@ We now have Active Directory installed on DC-1. However, we are not finished yet
 2. We will give our admin the name of “Jane Doe” and her login username shall be jane_admin@mydomain.com. 
 3. Ideally, we’d like for the user to change their password every time for security purposes. However, for the sake of this exercise, we will select for the password to never expire. 
 
+<img src="https://i.imgur.com/wHJMccp.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/o8OgZsq.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+
 <p>Now that jane_admin has been created, we must give her the role of ‘Admin’. Currently, just because she was created inside of an organizational unit folder called “_ADMINS” doesn’t mean her title carries substance or authority yet. We shall grant her authority right now. We’ll add Jane Doe to the Domain Admins Security Group.</p>
 
 4. Right click Jane Doe > Properties > Member Of > Add > Domain Admins [Enter Key & Check Names] > Apply & OK
 
 <p>In Active Directory Users and Computers, "Domain Admins" is a default group that holds administrative privileges over the entire domain. Members of the Domain Admins group have full control and unrestricted access to all resources within the domain. They can perform tasks such as creating, modifying, or deleting user accounts, managing group memberships, configuring security policies, and managing domain-wide settings. Essentially, Domain Admins have the highest level of administrative authority within the Active Directory domain and are responsible for managing and maintaining the domain infrastructure.</p>
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/5prj2Ju.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/IPTd2qT.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
 
 <h4>Log Out of DC-1 and Log In as New Admin</h4>
 
