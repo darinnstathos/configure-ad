@@ -255,9 +255,10 @@ username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
 
 4. Client-1 VM Overview > Select "Restart" to flush dns cache 
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/cHfZnzg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/tB82xBL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/YGVZQkF.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/RkYeWsW.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <h4>Join Client-1 to the Domain and Re-login as Admin</h4>
 
@@ -265,17 +266,21 @@ username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
 
 1. Log back into Client-1 VM with original user from Step 1. In this example, it's my name: darinstathos
 2. Right click the Windows icon > 'System' 
-3. Rename this PC > Advanced > Change > Domain
+3. Rename this PC (advanced) > Change > Domain
 4. Change the domain to: mydomain.com (or whatever domain you'd like)
+
+<img src="https://i.imgur.com/kbowguZ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/2owVYZj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/bxXLQHp.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <p>Since we altered the DNS settings earlier so that it matches DC-1’s private IP address, Client-1 will be able to recognize this domain.</p>
 
 5. We’ll be prompted to log in as Jane Admin (mydomain.com\jane_admin) and when this happens, our computer will be prompted to restart
-6. We can now log in to Client-1 as Jane Admin because Client-1 is shares the same domain network as the Domain Controller.
+6. We can now log into Client-1 as Jane Admin because Client-1 is shares the same domain network as the Domain Controller.
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/dHpcgqe.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/dsMpci3.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
 
 <h3>Step 6: Setup and Establish Remote Desktop for Non-Administrative Users on Client-1</h3>
 
@@ -284,6 +289,9 @@ username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
 1. Inside Client-1 VM: Right click Windows icon at bottom of screen > system properties
 2. Remote desktop > Select Users that can remotely access PC > add > Domain Users > OK
 3. You can now log into Client-1 as a normal, non-administrative user now
+
+<img src="https://i.imgur.com/JjCFyjm.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/k7QDAua.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <p>**Side notes:
   * If you go inside DC-1 VM > Active Directory Users and Computers > Users > Domain Users > Members: that’s where everyone is and where everyone will get added automatically 
