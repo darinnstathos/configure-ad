@@ -85,9 +85,9 @@ This tutorial outlines the implementation of on-premises Active Directory within
 3. Select 'IP Configurations' > Select the current/only IPConfig there
 4. Switch the assignment from 'Dynamic' to 'Static' and press 'Save'
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/dYzWLhZ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/g3IL4nQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/FHp5pT4.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 We have now switched the Domain Controller's NIC Private IP Address to be static. Now, there is more peace of mind in knowing that devices that connect to the domain and rely on the Domain Controller for user access/information will have secure connection and communication. 
 <br>
