@@ -124,8 +124,8 @@ Firewalls sometimes block ICMP (Internet Control Message Protocol) traffic as a 
 4. Type: "ping -t 10.0.0.4" (-t means that it will ping continuously)
 5. We can see the request failed/timed out because DC-1's firewall is preventing/blocking ICMP traffic from coming through
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/3b3sYC2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/2l07H1G.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <h4>Open Up the Firewall</h4>
 <p>Since we were unable to “ping”/connect to our Domain Controller, we must open up the firewall to allow ICMP traffic. To do this, we must connect/log into our Domain Controller VM and alter the settings.</p>
