@@ -148,7 +148,7 @@ Firewalls sometimes block ICMP (Internet Control Message Protocol) traffic as a 
 
 <p>Now, when we go back to our Client-1 VM, if we left the command-line open, we can now see that the “pings” are coming through because we opened up the DC-1’s firewall to allow ICMP traffic.</p>
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/cWVAUuA.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <h3>Step 3: Install Active Directory</h3>
 <Strong>What is Active Directory and why is it important?</strong>
