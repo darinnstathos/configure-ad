@@ -237,7 +237,7 @@ We now have Active Directory installed on DC-1. However, we are not finished yet
 <p>Now that Jane Doe is an admin, we can log out of our Domain Controller and log back in as Jane Doe.</p>
 username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/WcNCaDu.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <h3>Step 5: Join Client-1 (Windows VM) to the Domain</h3>
 
