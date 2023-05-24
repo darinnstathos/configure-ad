@@ -310,6 +310,10 @@ username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
 3. Create a new file > Copy/Paste the script below. This code allows us to create random usernames quickly > Run the script
 4. Random usernames are now being created
 
+<img src="https://i.imgur.com/PusOjdD.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/AEEJPFH.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+
  # ----- Edit these Variables for your own Use Case ----- #
 $PASSWORD_FOR_USERS   = "Password1"
 $NUMBER_OF_ACCOUNTS_TO_CREATE = 10000
@@ -362,9 +366,9 @@ while ($count -lt $NUMBER_OF_ACCOUNTS_TO_CREATE) {
 5. If we go back to DC-1 VM > Active Directory Users and Computers > _EMPLOYEES > Refresh: all the names are being dumped in there 
 6. We will choose one of these users and log into Client-1 VM with it. In this example, we will use username: Duna.lin (password: Password1)
 
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/2YJiMsr.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Sv9iB4e.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
 
 
 
