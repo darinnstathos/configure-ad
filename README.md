@@ -63,7 +63,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 2. Select the Resource Group: 'AD-Lab'
 3. Virtual Machine Name: 'Client-1'
 4. Select image: 'Windows 10 Pro, version 22H2 -x64Gen
-5. Size: vcpus
+5. Size: 2vcpus
 6. Create a username/password: (Example: darinstathos)
 7. Under licensing, check the box: "I can confirm I have eligible Windows 10/11 license with multi-tenant hosting rights."
 8. Forward to the next page: Next: Disks >, Next: Networking > Take note that Client-1 was automatically put on the same network as DC-1. This is important so that the two can later communicate with one another. 
