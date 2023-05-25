@@ -60,7 +60,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
   <h4>Creating our Client:</h4>
   
-    <strong>What is the client?</strong>
+  <strong>What is the client?</strong>
     
  <p>The client, in relation to the domain controller, is a device that connects to the network domain and relies on the domain controller for user authentication, access permissions, etc. The domain controller is the 'big brain' the lets the device/client know what to do/who's allowed to do what. The client interacts with the domain controller to log in, access shared resources, etc.</p>
     <p>We're creating a client device (Microsoft Windows) to witness the borrowing of user account information from our Domain Controller</P>
@@ -121,7 +121,7 @@ We have now switched the Domain Controller's NIC Private IP Address to be static
   
   1. In the Azure Portal, navigate to 'Virtual Machines'
   2. Select 'Client-1'
-  3. Copy the Public IP Address to clipboard (Example shown: [X.X.X,X]
+  3. Copy the Public IP Address to clipboard (Example shown: [20.163.26.26]
   4. Open Remote Desktop Connection (Windows) or Microsoft Remote Desktop (MacOS: can be downloaded from App Store)
   5. Paste the IP address
   6. Log in using the username/password created earlier in step 1. In this example, my username is my name: darinstathos
@@ -144,7 +144,7 @@ However, most likely, this “ping” will fail due to the Domain Controller’s
 
 Firewalls sometimes block ICMP (Internet Control Message Protocol) traffic as a security measure to protect against potential network vulnerabilities. ICMP traffic includes various types of messages, such as ping requests and error messages, which can be exploited for network scanning, denial-of-service attacks, or information disclosure. Blocking ICMP can help prevent these types of attacks and limit potential exposure of sensitive information. However, it's worth noting that ICMP is also used for legitimate network troubleshooting and diagnostic purposes, so firewall rules should be carefully configured to balance security and operational needs.
 
-<h4>🔵 Process for Checking Connectivity:<h4>
+<h4>🔵 Process for Checking Connectivity:</h4>
 
 1. We need to get DC-1's private IP Address: Azure Portal > 'Virtual Machines' > DC-1
 2. Copy the NIC Private IP Address. In this example, it's: 10.0.0.4
@@ -263,7 +263,8 @@ We now have Active Directory installed on DC-1. However, we are not finished yet
   <h4>🔵 Process for Creating Organizational Units: Employees and Admins</h4>
   
   1. Inside DC-1 VM, navigate to ‘Active Directory Users and Computers’
-- We can do this two ways: 
+
+<p>We can do this two ways:</p> 
 * Go to Service Manager > Tools (upper right-hand corner) > Active Directory Users and Computers
 * Search bar > Type: Active Directory Users and Computers
 
@@ -326,7 +327,7 @@ username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
 
 <p>Setting a client's DNS settings to the domain controller's private IP address is important because it helps the client find and connect to important resources within a network. It ensures that the client can communicate with the domain controller for things like logging in, accessing shared files and printers, and finding other computers on the network. It's like having the right address book entry to reach the central hub of the network, making everything work smoothly.</p>
 
-  <h4>🔵 Process for Setting Client-1 DNS Settings:<h4>
+  <h4>🔵 Process for Setting Client-1 DNS Settings:</h4>
     
 1. Go to Azure Portal > 'Virtual Machines' > DC-1 VM > Copy the Private IP address in the Overview (in this example: 10.0.0.4)
 2. Go to Client-1 VM > Networking > Network Interface 
@@ -372,14 +373,14 @@ username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
 <img src="https://i.imgur.com/dHpcgqe.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/dsMpci3.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-    <br
+    <br>
     
 
 <h3>🟢 Step 6: Setup and Establish Remote Desktop for Non-Administrative Users on Client-1</h3>
 
 <p>We're going to set it up so all domain users can remote login into Client-1. Right now, only admins can do this.</p>
 
-    <h4>🔵 Process for Setting Up Remote Desktop for Non-Admins:</h4>
+<h4>🔵 Process for Setting Up Remote Desktop for Non-Admins:</h4>
     
 1. Inside Client-1 VM: Right click Windows icon at bottom of screen > system properties
 2. Remote desktop > Select Users that can remotely access PC > add > Domain Users > OK
@@ -397,24 +398,21 @@ username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
 
 <p>Now that we’ve set it up so non-administrator users (regular users) can access Client-1, we’re going to put this into action by creating many users and logging into Client-1 with one of those users.</p>
 
-    <h4>🔵 Process for Creating Additional Users:</h4>
+<h4>🔵 Process for Creating Additional Users:</h4>
     
 1. Log into DC-1 VM as Jane Doe: mydomain.com\jane_admin
 2. Use the search bar to open up Powershell ISE, right click to run as administrator
-
-    <br>
+<br>
     
 <p>PowerShell ISE (Integrated Scripting Environment) is a user-friendly graphical tool provided by Microsoft for writing, testing, and executing PowerShell scripts. It provides an interactive and simplified environment for individuals, including IT professionals and system administrators, to automate tasks, manage systems, and perform various administrative tasks using the PowerShell scripting language. Think of it as a coding workspace with helpful features that make it easier to create and run PowerShell commands and scripts.</p>
-
-    <br>
+<br>
     
 3. Create a new file > Copy/Paste the script below. This code allows us to create random usernames quickly > Run the script
 4. Random usernames are now being created
 
 <img src="https://i.imgur.com/PusOjdD.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/AEEJPFH.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-
-    <br>
+<br>
 
  # ----- Edit these Variables for your own Use Case ----- #
 $PASSWORD_FOR_USERS   = "Password1"
@@ -463,12 +461,12 @@ while ($count -lt $NUMBER_OF_ACCOUNTS_TO_CREATE) {
     $count++
 }
 
-    <br>
+<br>
     
 5. If we go back to DC-1 VM > Active Directory Users and Computers > _EMPLOYEES > Refresh: all the names are being dumped in there 
 6. We will choose one of these users and log into Client-1 VM with it. In this example, we will use username: Duna.lin (password: Password1)
 
-    <br>
+<br>
     
 <img src="https://i.imgur.com/2YJiMsr.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/Sv9iB4e.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
