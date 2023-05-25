@@ -171,8 +171,6 @@ Firewalls sometimes block ICMP (Internet Control Message Protocol) traffic as a 
 
 <br>
   
-<img src="https://i.imgur.com/lNrjVhc.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<img src="https://i.imgur.com/jxbZ3XS.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/I8myAP2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 <br>
@@ -248,12 +246,12 @@ We now have Active Directory installed on DC-1. However, we are not finished yet
 2. Once booted out, we can log back into DC-1 using the domain we have now set up: mydomain.com\darinstathos (or) darinstathos@mydomain.com
 3. DC-1 is now officially a domain controller [[group policy]]
 
-  <br>
+<br>
   
 <img src="https://i.imgur.com/TuOxlzE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/EBmChAn.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-  <br>
+<br>
   
 <h3>🟢 Step 4: Create an Admin and a Normal User Account in Active Directory</h3>
   
@@ -264,7 +262,8 @@ We now have Active Directory installed on DC-1. However, we are not finished yet
   
   1. Inside DC-1 VM, navigate to ‘Active Directory Users and Computers’
 
-<p>We can do this two ways:</p> 
+<p>We can do this two ways:</p>
+
 * Go to Service Manager > Tools (upper right-hand corner) > Active Directory Users and Computers
 * Search bar > Type: Active Directory Users and Computers
 
@@ -272,13 +271,13 @@ We now have Active Directory installed on DC-1. However, we are not finished yet
 3. Right click on “mydomain.com” (or whatever name you decided to give your domain) > 'New' > 'Organizational Unit'
 4. We will create an organizational for _EMPLOYEES and for _ADMINS
 
-  <br>
+<br>
   
 <img src="https://i.imgur.com/RSgMaLR.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/m4OE8Wr.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/vPE2TyC.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-  <br>
+<br>
   
 <h4>🔵 Process for Creating an Employee/Admin & then Assigning Role of Admin</h4>
   
@@ -288,24 +287,24 @@ We now have Active Directory installed on DC-1. However, we are not finished yet
 2. We will give our admin the name of “Jane Doe” and her login username shall be jane_admin@mydomain.com. 
 3. Ideally, we’d like for the user to change their password every time for security purposes. However, for the sake of this exercise, we will select for the password to never expire. 
 
-  <br>
+<br>
   
 <img src="https://i.imgur.com/wHJMccp.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/o8OgZsq.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-  <br>
+<br>
 
 <p>Now that jane_admin has been created, we must give her the role of ‘Admin’. Currently, just because she was created inside of an organizational unit folder called “_ADMINS” doesn’t mean her title carries substance or authority yet. We shall grant her authority right now. We’ll add Jane Doe to the Domain Admins Security Group.</p>
 
-  <br> 
+<br> 
   
 4. Right click Jane Doe > Properties > Member Of > Add > Domain Admins [Enter Key & Check Names] > Apply & OK
   
-  <br>
+<br>
 
 <p>In Active Directory Users and Computers, "Domain Admins" is a default group that holds administrative privileges over the entire domain. Members of the Domain Admins group have full control and unrestricted access to all resources within the domain. They can perform tasks such as creating, modifying, or deleting user accounts, managing group memberships, configuring security policies, and managing domain-wide settings. Essentially, Domain Admins have the highest level of administrative authority within the Active Directory domain and are responsible for managing and maintaining the domain infrastructure.</p>
 
-  <br> 
+<br> 
   
 <img src="https://i.imgur.com/5prj2Ju.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/IPTd2qT.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -316,6 +315,8 @@ We now have Active Directory installed on DC-1. However, we are not finished yet
 
 <p>Now that Jane Doe is an admin, we can log out of our Domain Controller and log back in as Jane Doe.</p>
 username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
+
+<br>
 
 <img src="https://i.imgur.com/WcNCaDu.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
@@ -337,14 +338,14 @@ username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
 
 4. Client-1 VM Overview > Select "Restart" to flush dns cache 
 
-    <br>
+<br>
     
 <img src="https://i.imgur.com/cHfZnzg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/tB82xBL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/YGVZQkF.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/RkYeWsW.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-    <br>
+<br>
     
 <h4>🔵 Process for Joining Client-1 to the Domain and Re-login as Admin</h4>
 
@@ -355,25 +356,25 @@ username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
 3. Rename this PC (advanced) > Change > Domain
 4. Change the domain to: mydomain.com (or whatever domain you'd like)
 
-    <br>
+<br>
     
 <img src="https://i.imgur.com/kbowguZ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/2owVYZj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/bxXLQHp.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-    <br>
+<br>
     
 <p>Since we altered the DNS settings earlier so that it matches DC-1’s private IP address, Client-1 will be able to recognize this domain.</p>
 
 5. We’ll be prompted to log in as Jane Admin (mydomain.com\jane_admin) and when this happens, our computer will be prompted to restart
 6. We can now log into Client-1 as Jane Admin because Client-1 is shares the same domain network as the Domain Controller.
 
-    <br>
+<br>
     
 <img src="https://i.imgur.com/dHpcgqe.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/dsMpci3.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-    <br>
+<br>
     
 
 <h3>🟢 Step 6: Setup and Establish Remote Desktop for Non-Administrative Users on Client-1</h3>
@@ -389,9 +390,10 @@ username: jane_admin@mydomain.com (or) mydomain.com\jane_admin
 <img src="https://i.imgur.com/JjCFyjm.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <img src="https://i.imgur.com/k7QDAua.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
-<p>**Side notes:
-  * If you go inside DC-1 VM > Active Directory Users and Computers > Users > Domain Users > Members: that’s where everyone is and where everyone will get added automatically 
-  *  Group Policy allows us to do this remotely and with MANY computers (hundred or thousands of computers instantly instead of logging into each computer one by one), but that’s beyond the scope of here
+<p>**Side notes:</p>
+
+* If you go inside DC-1 VM > Active Directory Users and Computers > Users > Domain Users > Members: that’s where everyone is and where everyone will get added automatically 
+* Group Policy allows us to do this remotely and with MANY computers (hundred or thousands of computers instantly instead of logging into each computer one by one), but that’s beyond the scope of here
 
 
 <h3>🟢 Step 7: Create additional users and log into Client-1 with those users</h3>
